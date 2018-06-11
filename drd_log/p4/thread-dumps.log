@@ -1,0 +1,151 @@
+2018-04-26T09:44:36.036-0500: ThreadDumper: Writing thread dump
+Full thread dump Java HotSpot(TM) 64-Bit Server VM (25.144-b01 mixed mode):
+
+"Reference Handler" id=2 WAITING (lock=java.lang.ref.Reference$Lock@23b298dd)
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Unknown Source)
+	at java.lang.ref.Reference.tryHandlePending(Unknown Source)
+	at java.lang.ref.Reference$ReferenceHandler.run(Unknown Source)
+
+"Finalizer" id=3 WAITING (lock=java.lang.ref.ReferenceQueue$Lock@fe271c)
+	at java.lang.Object.wait(Native Method)
+	at java.lang.ref.ReferenceQueue.remove(Unknown Source)
+	at java.lang.ref.ReferenceQueue.remove(Unknown Source)
+	at java.lang.ref.Finalizer$FinalizerThread.run(Unknown Source)
+
+"Signal Dispatcher" id=4 RUNNABLE
+
+"Attach Listener" id=5 RUNNABLE
+
+"DRD-Thread-Dumper" id=6 RUNNABLE
+	at sun.management.ThreadImpl.dumpThreads0(Native Method)
+	at sun.management.ThreadImpl.dumpAllThreads(Unknown Source)
+	at com.devexperts.drd.agent.ThreadDumper.makeThreadDump(ThreadDumper.java:68)
+	at com.devexperts.drd.agent.ThreadDumper.run(ThreadDumper.java:52)
+
+"DRD-stats-collector 0" id=7 TIMED_WAITING (lock=drdjava.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@2f410141)
+	at sun.misc.Unsafe.park(Native Method)
+	at drdjava.util.concurrent.locks.LockSupport.parkNanos(Unknown Source)
+	at drdjava.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(Unknown Source)
+	at drdjava.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+	at drdjava.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+	at drdjava.util.concurrent.ThreadPoolExecutor.getTask(Unknown Source)
+	at drdjava.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at drdjava.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+"reader1" id=13 TIMED_WAITING
+	at java.lang.Thread.sleep(Native Method)
+	at MMIO_Reader$reader.run(MMIO_Reader.java:178)
+	at java.lang.Thread.run(Unknown Source)
+
+"writer1" id=14 TIMED_WAITING
+	at java.lang.Thread.sleep(Native Method)
+	at MMIO_Reader$writer.run(MMIO_Reader.java:214)
+	at java.lang.Thread.run(Unknown Source)
+
+"reader2" id=15 TIMED_WAITING
+	at java.lang.Thread.sleep(Native Method)
+	at MMIO_Reader$reader.run(MMIO_Reader.java:178)
+	at java.lang.Thread.run(Unknown Source)
+
+"writer2" id=16 TIMED_WAITING
+	at java.lang.Thread.sleep(Native Method)
+	at MMIO_Reader$writer.run(MMIO_Reader.java:214)
+	at java.lang.Thread.run(Unknown Source)
+
+"reader3" id=17 TIMED_WAITING
+	at java.lang.Thread.sleep(Native Method)
+	at MMIO_Reader$reader.run(MMIO_Reader.java:178)
+	at java.lang.Thread.run(Unknown Source)
+
+"writer3" id=18 TIMED_WAITING
+	at java.lang.Thread.sleep(Native Method)
+	at MMIO_Reader$writer.run(MMIO_Reader.java:214)
+	at java.lang.Thread.run(Unknown Source)
+
+"DestroyJavaVM" id=19 RUNNABLE
+
+2018-04-26T09:44:41.041-0500: ThreadDumper: Writing thread dump
+Full thread dump Java HotSpot(TM) 64-Bit Server VM (25.144-b01 mixed mode):
+
+"Reference Handler" id=2 WAITING (lock=java.lang.ref.Reference$Lock@23b298dd)
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Unknown Source)
+	at java.lang.ref.Reference.tryHandlePending(Unknown Source)
+	at java.lang.ref.Reference$ReferenceHandler.run(Unknown Source)
+
+"Finalizer" id=3 WAITING (lock=java.lang.ref.ReferenceQueue$Lock@fe271c)
+	at java.lang.Object.wait(Native Method)
+	at java.lang.ref.ReferenceQueue.remove(Unknown Source)
+	at java.lang.ref.ReferenceQueue.remove(Unknown Source)
+	at java.lang.ref.Finalizer$FinalizerThread.run(Unknown Source)
+
+"Signal Dispatcher" id=4 RUNNABLE
+
+"Attach Listener" id=5 RUNNABLE
+
+"DRD-Thread-Dumper" id=6 RUNNABLE
+	at sun.management.ThreadImpl.dumpThreads0(Native Method)
+	at sun.management.ThreadImpl.dumpAllThreads(Unknown Source)
+	at com.devexperts.drd.agent.ThreadDumper.makeThreadDump(ThreadDumper.java:68)
+	at com.devexperts.drd.agent.ThreadDumper.run(ThreadDumper.java:52)
+
+"DRD-stats-collector 0" id=7 TIMED_WAITING (lock=drdjava.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@2f410141)
+	at sun.misc.Unsafe.park(Native Method)
+	at drdjava.util.concurrent.locks.LockSupport.parkNanos(Unknown Source)
+	at drdjava.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(Unknown Source)
+	at drdjava.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+	at drdjava.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+	at drdjava.util.concurrent.ThreadPoolExecutor.getTask(Unknown Source)
+	at drdjava.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at drdjava.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+"reader1" id=13 TIMED_WAITING
+	at java.lang.Thread.sleep(Native Method)
+	at MMIO_Reader$reader.run(MMIO_Reader.java:178)
+	at java.lang.Thread.run(Unknown Source)
+
+"writer1" id=14 RUNNABLE
+	at MMIO_Reader.access$000(MMIO_Reader.java:17)
+	at MMIO_Reader$Node.<init>(MMIO_Reader.java:62)
+	at MMIO_Reader.getNode(MMIO_Reader.java:92)
+	at MMIO_Reader.access$700(MMIO_Reader.java:17)
+	at MMIO_Reader$writer.modifyOneNodeVal(MMIO_Reader.java:192)
+	at MMIO_Reader$writer.run(MMIO_Reader.java:206)
+	at java.lang.Thread.run(Unknown Source)
+
+"reader2" id=15 TIMED_WAITING
+	at java.lang.Thread.sleep(Native Method)
+	at MMIO_Reader$reader.run(MMIO_Reader.java:178)
+	at java.lang.Thread.run(Unknown Source)
+
+"writer2" id=16 TIMED_WAITING
+	at java.lang.Thread.sleep(Native Method)
+	at MMIO_Reader$writer.run(MMIO_Reader.java:214)
+	at java.lang.Thread.run(Unknown Source)
+
+"reader3" id=17 WAITING (lock=java.util.concurrent.Semaphore$NonfairSync@67e2d983)
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(Unknown Source)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.parkAndCheckInterrupt(Unknown Source)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.doAcquireShared(Unknown Source)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.acquireShared(Unknown Source)
+	at java.util.concurrent.Semaphore.acquireUninterruptibly(Unknown Source)
+	at MMIO_Reader$reader.printFromIndex(MMIO_Reader.java:139)
+	at MMIO_Reader$reader.run(MMIO_Reader.java:176)
+	at java.lang.Thread.run(Unknown Source)
+
+"writer3" id=18 WAITING (lock=java.util.concurrent.Semaphore$NonfairSync@5d47c63f)
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(Unknown Source)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.parkAndCheckInterrupt(Unknown Source)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.doAcquireShared(Unknown Source)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.acquireShared(Unknown Source)
+	at java.util.concurrent.Semaphore.acquireUninterruptibly(Unknown Source)
+	at MMIO_Reader$writer.run(MMIO_Reader.java:205)
+	at java.lang.Thread.run(Unknown Source)
+
+"DestroyJavaVM" id=19 RUNNABLE
+

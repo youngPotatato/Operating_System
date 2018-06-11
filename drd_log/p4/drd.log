@@ -1,0 +1,319 @@
+26.04.2018 09:44:04 --------------------DRD settings:----------------------
+logging_level = INFO
+races_grouping = CALL_CLASS_AND_METHOD
+report_races_on_foreign_calls = true
+debugTransformMode = APPLICATION
+data_clock_histogram_size = 20
+internal_profiling_enabled = true
+internal_metrics = FULL
+-------------------------------------------------------
+26.04.2018 09:44:05 Trying to find 'D:/work_study/courses/OS/DRD-0.7.1\config.xml' as file ...
+26.04.2018 09:44:05 D:\work_study\courses\OS\DRD-0.7.1\config.xml (系统找不到指定的文件。)
+26.04.2018 09:44:05 Trying to find 'D:/work_study/courses/OS/DRD-0.7.1\config.xml' as resource ...
+26.04.2018 09:44:05 
+Sync instrumentation scope config : ScopeConfig with default policy 'include all' and no special rules.
+
+Race detection instrumentation scope config : ScopeConfig with default policy 'include all' and no special rules.
+
+Accesses config:
+
+Accesses of following fields wouldn't be instrumented : 
+Any name if owner matches 'com/devexperts/util/.*'. 
+OR
+Any owner if name matches 'log|logger'. 
+OR
+Owner matches 'com/devexperts/app/ABC.*' and name matches 'my_field'.
+
+Foreign calls of following methods wouldn't be instrumented : 
+Any name if owner matches 'java/lang/Integer.*|java/lang/Boolean.*|com/google/common/base/Preconditions.*|java/lang/Float.*|java/util/concurrent/.*|java/io/PrintStream.*|java/lang/String.*|java/lang/Character.*|java/util/regex/Pattern.*|java/util/Properties.*|java/util/Arrays.*|com/google/common/collect/ImmutableList.*|com/thoughtworks/xstream/.*|java/lang/Thread.*|java/security/AccessController.*|java/lang/Math.*|java/util/EnumSet.*|javax/net/SocketFactory.*|org/zk.*|java/lang/Runtime.*|java/lang/Byte.*|java/lang/reflect.*|java/lang/Long.*|java/lang/Enum.*|org/apache/log4j/Logger.*|javax/swing/SwingUtilities.*|sun/misc/Unsafe.*|java/util/logging/.*|org/jdesktop.*|java/lang/Double.*|java/lang/System.*'. 
+OR
+Owner matches 'java/lang/Class.*' and name matches 'forName'. 
+OR
+Owner matches 'java/util/Calendar.*' and name matches 'getInstance'.
+
+26.04.2018 09:44:05 
+Contracts config:
+
+Contracts matcher would try to apply following contracts sequentially. If no one matches, target method would be treated as write.
+Contract{ class: java/util/Map.*, read: keySet|values|entrySet, write: null, raceDetectionMode: ALL}
+Contract{ class: java/util/List.*, read: listIterator, write: null, raceDetectionMode: ALL}
+Contract{ class: .*, read: get.*|toString|hashCode|equals|is.*|contains.*|iter.*|has.*|size, write: null, raceDetectionMode: ALL}
+
+26.04.2018 09:44:05 Trace config: 
+{com/devexperts/MyManagerImpl={myField= trackThreadAccess for any caller}}
+*: {com/library/SomeClass= trackThreadAccess for any caller, java/util/List= printDataOperations for caller, matching pattern 'com/devexperts/jtt/tracker/gui/SystemTrayHelper.*'}
+
+26.04.2018 09:44:05 Config initialized : true.
+26.04.2018 09:44:05 Transformer and detector launched.
+26.04.2018 09:44:05 Trying to find 'D:/work_study/courses/OS/DRD-0.7.1\hb-config.xml' as file ...
+26.04.2018 09:44:05 D:\work_study\courses\OS\DRD-0.7.1\hb-config.xml (系统找不到指定的文件。)
+26.04.2018 09:44:05 Trying to find 'D:/work_study/courses/OS/DRD-0.7.1\hb-config.xml' as resource ...
+26.04.2018 09:44:05 
+Happens-before config read successfully. Happens-before contracts are: 
+
+HBContract{id=0, vertices=[HBVertex{argsIndices=[-1, 0], owner='java/util/concurrent/ConcurrentMap', name='put', descriptor='(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;', hbContractId=0, id=0, type=SEND, shouldReturnTrue=false}, HBVertex{argsIndices=[-1, 0], owner='java/util/concurrent/ConcurrentMap', name='get', descriptor='(Ljava/lang/Object;)Ljava/lang/Object;', hbContractId=0, id=1, type=RECEIVE, shouldReturnTrue=false}]}
+HBContract{id=1, vertices=[HBVertex{argsIndices=[-1], owner='java/util/concurrent/locks/Lock', name='unlock', descriptor='()V', hbContractId=1, id=2, type=SEND, shouldReturnTrue=false}, HBVertex{argsIndices=[-1], owner='java/util/concurrent/locks/Lock', name='lock', descriptor='()V', hbContractId=1, id=3, type=RECEIVE, shouldReturnTrue=false}]}
+HBContract{id=2, vertices=[HBVertex{argsIndices=[0], owner='java/util/concurrent/Executor', name='execute', descriptor='(Ljava/lang/Runnable;)V', hbContractId=2, id=4, type=SEND, shouldReturnTrue=false}, HBVertex{argsIndices=[-1], owner='java/lang/Runnable', name='run', descriptor='()V', hbContractId=2, id=5, type=RECEIVE, shouldReturnTrue=false}]}
+HBContract{id=3, vertices=[HBVertex{argsIndices=[0, 1], owner='sun/misc/Unsafe', name='compareAndSwapObject', descriptor='(Ljava/lang/Object;JLjava/lang/Object;Ljava/lang/Object;)Z', hbContractId=3, id=6, type=FULL, shouldReturnTrue=true}, HBVertex{argsIndices=[0, 1], owner='sun/misc/Unsafe', name='compareAndSwapLong', descriptor='(Ljava/lang/Object;JJJ)Z', hbContractId=3, id=7, type=FULL, shouldReturnTrue=true}, HBVertex{argsIndices=[0, 1], owner='sun/misc/Unsafe', name='compareAndSwapInt', descriptor='(Ljava/lang/Object;JII)Z', hbContractId=3, id=8, type=FULL, shouldReturnTrue=true}, HBVertex{argsIndices=[0, 1], owner='sun/misc/Unsafe', name='getObjectVolatile', descriptor='(Ljava/lang/Object;J)Ljava/lang/Object;', hbContractId=3, id=9, type=RECEIVE, shouldReturnTrue=false}, HBVertex{argsIndices=[0, 1], owner='sun/misc/Unsafe', name='putObjectVolatile', descriptor='(Ljava/lang/Object;JLjava/lang/Object;)V', hbContractId=3, id=10, type=SEND, shouldReturnTrue=false}, HBVertex{argsIndices=[0, 1], owner='sun/misc/Unsafe', name='getIntVolatile', descriptor='(Ljava/lang/Object;J)I', hbContractId=3, id=11, type=RECEIVE, shouldReturnTrue=false}, HBVertex{argsIndices=[0, 1], owner='sun/misc/Unsafe', name='putIntVolatile', descriptor='(Ljava/lang/Object;JI)V', hbContractId=3, id=12, type=SEND, shouldReturnTrue=false}, HBVertex{argsIndices=[0, 1], owner='sun/misc/Unsafe', name='getBooleanVolatile', descriptor='(Ljava/lang/Object;J)Z', hbContractId=3, id=13, type=RECEIVE, shouldReturnTrue=false}, HBVertex{argsIndices=[0, 1], owner='sun/misc/Unsafe', name='putBooleanVolatile', descriptor='(Ljava/lang/Object;JZ)V', hbContractId=3, id=14, type=SEND, shouldReturnTrue=false}, HBVertex{argsIndices=[0, 1], owner='sun/misc/Unsafe', name='getByteVolatile', descriptor='(Ljava/lang/Object;J)B', hbContractId=3, id=15, type=RECEIVE, shouldReturnTrue=false}, HBVertex{argsIndices=[0, 1], owner='sun/misc/Unsafe', name='putByteVolatile', descriptor='(Ljava/lang/Object;JB)V', hbContractId=3, id=16, type=SEND, shouldReturnTrue=false}, HBVertex{argsIndices=[0, 1], owner='sun/misc/Unsafe', name='getShortVolatile', descriptor='(Ljava/lang/Object;J)S', hbContractId=3, id=17, type=RECEIVE, shouldReturnTrue=false}, HBVertex{argsIndices=[0, 1], owner='sun/misc/Unsafe', name='putShortVolatile', descriptor='(Ljava/lang/Object;JS)V', hbContractId=3, id=18, type=SEND, shouldReturnTrue=false}, HBVertex{argsIndices=[0, 1], owner='sun/misc/Unsafe', name='getCharVolatile', descriptor='(Ljava/lang/Object;J)C', hbContractId=3, id=19, type=RECEIVE, shouldReturnTrue=false}, HBVertex{argsIndices=[0, 1], owner='sun/misc/Unsafe', name='putCharVolatile', descriptor='(Ljava/lang/Object;JC)V', hbContractId=3, id=20, type=SEND, shouldReturnTrue=false}, HBVertex{argsIndices=[0, 1], owner='sun/misc/Unsafe', name='getLongVolatile', descriptor='(Ljava/lang/Object;J)J', hbContractId=3, id=21, type=RECEIVE, shouldReturnTrue=false}, HBVertex{argsIndices=[0, 1], owner='sun/misc/Unsafe', name='putLongVolatile', descriptor='(Ljava/lang/Object;JJ)V', hbContractId=3, id=22, type=SEND, shouldReturnTrue=false}, HBVertex{argsIndices=[0, 1], owner='sun/misc/Unsafe', name='getFloatVolatile', descriptor='(Ljava/lang/Object;J)F', hbContractId=3, id=23, type=RECEIVE, shouldReturnTrue=false}, HBVertex{argsIndices=[0, 1], owner='sun/misc/Unsafe', name='putFloatVolatile', descriptor='(Ljava/lang/Object;JF)V', hbContractId=3, id=24, type=SEND, shouldReturnTrue=false}, HBVertex{argsIndices=[0, 1], owner='sun/misc/Unsafe', name='getDoubleVolatile', descriptor='(Ljava/lang/Object;J)D', hbContractId=3, id=25, type=RECEIVE, shouldReturnTrue=false}, HBVertex{argsIndices=[0, 1], owner='sun/misc/Unsafe', name='putDoubleVolatile', descriptor='(Ljava/lang/Object;JD)V', hbContractId=3, id=26, type=SEND, shouldReturnTrue=false}]}
+HBContract{id=4, vertices=[HBVertex{argsIndices=[-1], owner='java/util/concurrent/locks/AbstractQueuedSynchronizer', name='tryAcquire', descriptor='(I)Z', hbContractId=4, id=27, type=RECEIVE, shouldReturnTrue=true}, HBVertex{argsIndices=[-1], owner='java/util/concurrent/locks/AbstractQueuedSynchronizer', name='tryRelease', descriptor='(I)Z', hbContractId=4, id=28, type=SEND, shouldReturnTrue=false}, HBVertex{argsIndices=[-1], owner='java/util/concurrent/locks/AbstractQueuedSynchronizer', name='tryAcquireShared', descriptor='(I)Z', hbContractId=4, id=29, type=RECEIVE, shouldReturnTrue=true}, HBVertex{argsIndices=[-1], owner='java/util/concurrent/locks/AbstractQueuedSynchronizer', name='tryReleaseShared', descriptor='(I)Z', hbContractId=4, id=30, type=SEND, shouldReturnTrue=false}, HBVertex{argsIndices=[-1], owner='java/util/concurrent/locks/AbstractQueuedSynchronizer', name='acquire', descriptor='(I)V', hbContractId=4, id=31, type=RECEIVE, shouldReturnTrue=false}, HBVertex{argsIndices=[-1], owner='java/util/concurrent/locks/AbstractQueuedSynchronizer', name='acquireInterruptibly', descriptor='(I)V', hbContractId=4, id=32, type=RECEIVE, shouldReturnTrue=false}, HBVertex{argsIndices=[-1], owner='java/util/concurrent/locks/AbstractQueuedSynchronizer', name='tryAcquireNanos', descriptor='(IJ)Z', hbContractId=4, id=33, type=RECEIVE, shouldReturnTrue=true}, HBVertex{argsIndices=[-1], owner='java/util/concurrent/locks/AbstractQueuedSynchronizer', name='release', descriptor='(I)Z', hbContractId=4, id=34, type=SEND, shouldReturnTrue=false}, HBVertex{argsIndices=[-1], owner='java/util/concurrent/locks/AbstractQueuedSynchronizer', name='acquireShared', descriptor='(I)V', hbContractId=4, id=35, type=RECEIVE, shouldReturnTrue=false}, HBVertex{argsIndices=[-1], owner='java/util/concurrent/locks/AbstractQueuedSynchronizer', name='acquireSharedInterruptibly', descriptor='(I)V', hbContractId=4, id=36, type=RECEIVE, shouldReturnTrue=false}, HBVertex{argsIndices=[-1], owner='java/util/concurrent/locks/AbstractQueuedSynchronizer', name='tryAcquireSharedNanos', descriptor='(IJ)Z', hbContractId=4, id=37, type=RECEIVE, shouldReturnTrue=true}, HBVertex{argsIndices=[-1], owner='java/util/concurrent/locks/AbstractQueuedSynchronizer', name='releaseShared', descriptor='(I)Z', hbContractId=4, id=38, type=SEND, shouldReturnTrue=false}, HBVertex{argsIndices=[-1], owner='java/util/concurrent/locks/AbstractQueuedSynchronizer', name='setState', descriptor='(I)V', hbContractId=4, id=39, type=SEND, shouldReturnTrue=false}, HBVertex{argsIndices=[-1], owner='java/util/concurrent/locks/AbstractQueuedSynchronizer', name='getState', descriptor='()I', hbContractId=4, id=40, type=RECEIVE, shouldReturnTrue=false}, HBVertex{argsIndices=[-1], owner='java/util/concurrent/locks/AbstractQueuedSynchronizer', name='compareAndSetState', descriptor='(II)Z', hbContractId=4, id=41, type=FULL, shouldReturnTrue=true}]}
+HBContract{id=5, vertices=[HBVertex{argsIndices=[-1], owner='java/util/concurrent/atomic/AtomicInteger', name='get', descriptor='()I', hbContractId=5, id=42, type=RECEIVE, shouldReturnTrue=false}, HBVertex{argsIndices=[-1], owner='java/util/concurrent/atomic/AtomicInteger', name='set', descriptor='(I)V', hbContractId=5, id=43, type=SEND, shouldReturnTrue=false}, HBVertex{argsIndices=[-1], owner='java/util/concurrent/atomic/AtomicInteger', name='getAndSet', descriptor='(I)I', hbContractId=5, id=44, type=FULL, shouldReturnTrue=false}, HBVertex{argsIndices=[-1], owner='java/util/concurrent/atomic/AtomicInteger', name='compareAndSet', descriptor='(II)Z', hbContractId=5, id=45, type=FULL, shouldReturnTrue=true}, HBVertex{argsIndices=[-1], owner='java/util/concurrent/atomic/AtomicInteger', name='getAndIncrement', descriptor='()I', hbContractId=5, id=46, type=FULL, shouldReturnTrue=false}, HBVertex{argsIndices=[-1], owner='java/util/concurrent/atomic/AtomicInteger', name='getAndDecrement', descriptor='()I', hbContractId=5, id=47, type=FULL, shouldReturnTrue=false}, HBVertex{argsIndices=[-1], owner='java/util/concurrent/atomic/AtomicInteger', name='getAndAdd', descriptor='(I)I', hbContractId=5, id=48, type=FULL, shouldReturnTrue=false}, HBVertex{argsIndices=[-1], owner='java/util/concurrent/atomic/AtomicInteger', name='incrementAndGet', descriptor='()I', hbContractId=5, id=49, type=FULL, shouldReturnTrue=false}, HBVertex{argsIndices=[-1], owner='java/util/concurrent/atomic/AtomicInteger', name='decrementAndGet', descriptor='()I', hbContractId=5, id=50, type=FULL, shouldReturnTrue=false}, HBVertex{argsIndices=[-1], owner='java/util/concurrent/atomic/AtomicInteger', name='addAndGet', descriptor='(I)I', hbContractId=5, id=51, type=FULL, shouldReturnTrue=false}]}
+HBContract{id=6, vertices=[HBVertex{argsIndices=[-1], owner='java/util/concurrent/atomic/AtomicLong', name='get', descriptor='()J', hbContractId=6, id=52, type=RECEIVE, shouldReturnTrue=false}, HBVertex{argsIndices=[-1], owner='java/util/concurrent/atomic/AtomicLong', name='set', descriptor='(J)V', hbContractId=6, id=53, type=SEND, shouldReturnTrue=false}, HBVertex{argsIndices=[-1], owner='java/util/concurrent/atomic/AtomicLong', name='getAndSet', descriptor='(J)J', hbContractId=6, id=54, type=FULL, shouldReturnTrue=false}, HBVertex{argsIndices=[-1], owner='java/util/concurrent/atomic/AtomicLong', name='compareAndSet', descriptor='(JJ)Z', hbContractId=6, id=55, type=FULL, shouldReturnTrue=true}, HBVertex{argsIndices=[-1], owner='java/util/concurrent/atomic/AtomicLong', name='getAndIncrement', descriptor='()J', hbContractId=6, id=56, type=FULL, shouldReturnTrue=false}, HBVertex{argsIndices=[-1], owner='java/util/concurrent/atomic/AtomicLong', name='getAndDecrement', descriptor='()J', hbContractId=6, id=57, type=FULL, shouldReturnTrue=false}, HBVertex{argsIndices=[-1], owner='java/util/concurrent/atomic/AtomicLong', name='getAndAdd', descriptor='(J)J', hbContractId=6, id=58, type=FULL, shouldReturnTrue=false}, HBVertex{argsIndices=[-1], owner='java/util/concurrent/atomic/AtomicLong', name='incrementAndGet', descriptor='()J', hbContractId=6, id=59, type=FULL, shouldReturnTrue=false}, HBVertex{argsIndices=[-1], owner='java/util/concurrent/atomic/AtomicLong', name='decrementAndGet', descriptor='()J', hbContractId=6, id=60, type=FULL, shouldReturnTrue=false}, HBVertex{argsIndices=[-1], owner='java/util/concurrent/atomic/AtomicLong', name='addAndGet', descriptor='(J)J', hbContractId=6, id=61, type=FULL, shouldReturnTrue=false}]}
+HBContract{id=7, vertices=[HBVertex{argsIndices=[-1], owner='java/util/concurrent/atomic/AtomicBoolean', name='get', descriptor='()Z', hbContractId=7, id=62, type=RECEIVE, shouldReturnTrue=false}, HBVertex{argsIndices=[-1], owner='java/util/concurrent/atomic/AtomicBoolean', name='compareAndSet', descriptor='(ZZ)Z', hbContractId=7, id=63, type=FULL, shouldReturnTrue=true}, HBVertex{argsIndices=[-1], owner='java/util/concurrent/atomic/AtomicBoolean', name='set', descriptor='(Z)V', hbContractId=7, id=64, type=SEND, shouldReturnTrue=false}, HBVertex{argsIndices=[-1], owner='java/util/concurrent/atomic/AtomicBoolean', name='getAndSet', descriptor='(Z)Z', hbContractId=7, id=65, type=FULL, shouldReturnTrue=false}]}
+HBContract{id=8, vertices=[HBVertex{argsIndices=[0], owner='java/util/concurrent/atomic/AtomicReferenceFieldUpdater', name='compareAndSet', descriptor='(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Z', hbContractId=8, id=66, type=FULL, shouldReturnTrue=true}, HBVertex{argsIndices=[0], owner='java/util/concurrent/atomic/AtomicReferenceFieldUpdater', name='set', descriptor='(Ljava/lang/Object;Ljava/lang/Object;)V', hbContractId=8, id=67, type=SEND, shouldReturnTrue=false}, HBVertex{argsIndices=[0], owner='java/util/concurrent/atomic/AtomicReferenceFieldUpdater', name='get', descriptor='(Ljava/lang/Object;)Ljava/lang/Object;', hbContractId=8, id=68, type=RECEIVE, shouldReturnTrue=false}, HBVertex{argsIndices=[0], owner='java/util/concurrent/atomic/AtomicReferenceFieldUpdater', name='getAndSet', descriptor='(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;', hbContractId=8, id=69, type=FULL, shouldReturnTrue=false}]}
+HBContract{id=9, vertices=[HBVertex{argsIndices=[0], owner='java/util/concurrent/atomic/AtomicIntegerFieldUpdater', name='compareAndSet', descriptor='(Ljava/lang/Object;II)Z', hbContractId=9, id=70, type=FULL, shouldReturnTrue=true}, HBVertex{argsIndices=[0], owner='java/util/concurrent/atomic/AtomicIntegerFieldUpdater', name='set', descriptor='(Ljava/lang/Object;I)V', hbContractId=9, id=71, type=SEND, shouldReturnTrue=false}, HBVertex{argsIndices=[0], owner='java/util/concurrent/atomic/AtomicIntegerFieldUpdater', name='get', descriptor='(Ljava/lang/Object;)I', hbContractId=9, id=72, type=RECEIVE, shouldReturnTrue=false}, HBVertex{argsIndices=[0], owner='java/util/concurrent/atomic/AtomicIntegerFieldUpdater', name='getAndSet', descriptor='(Ljava/lang/Object;I)I', hbContractId=9, id=73, type=FULL, shouldReturnTrue=false}, HBVertex{argsIndices=[0], owner='java/util/concurrent/atomic/AtomicIntegerFieldUpdater', name='getAndIncrement', descriptor='(Ljava/lang/Object;)I', hbContractId=9, id=74, type=FULL, shouldReturnTrue=false}, HBVertex{argsIndices=[0], owner='java/util/concurrent/atomic/AtomicIntegerFieldUpdater', name='getAndDecrement', descriptor='(Ljava/lang/Object;)I', hbContractId=9, id=75, type=FULL, shouldReturnTrue=false}, HBVertex{argsIndices=[0], owner='java/util/concurrent/atomic/AtomicIntegerFieldUpdater', name='getAndAdd', descriptor='(Ljava/lang/Object;I)I', hbContractId=9, id=76, type=FULL, shouldReturnTrue=false}, HBVertex{argsIndices=[0], owner='java/util/concurrent/atomic/AtomicIntegerFieldUpdater', name='incrementAndGet', descriptor='(Ljava/lang/Object;)I', hbContractId=9, id=77, type=FULL, shouldReturnTrue=false}, HBVertex{argsIndices=[0], owner='java/util/concurrent/atomic/AtomicIntegerFieldUpdater', name='decrementAndGet', descriptor='(Ljava/lang/Object;)I', hbContractId=9, id=78, type=FULL, shouldReturnTrue=false}, HBVertex{argsIndices=[0], owner='java/util/concurrent/atomic/AtomicIntegerFieldUpdater', name='addAndGet', descriptor='(Ljava/lang/Object;I)I', hbContractId=9, id=79, type=FULL, shouldReturnTrue=false}]}
+HBContract{id=10, vertices=[HBVertex{argsIndices=[0], owner='java/util/concurrent/atomic/AtomicLongFieldUpdater', name='compareAndSet', descriptor='(Ljava/lang/Object;JJ)Z', hbContractId=10, id=80, type=FULL, shouldReturnTrue=true}, HBVertex{argsIndices=[0], owner='java/util/concurrent/atomic/AtomicLongFieldUpdater', name='set', descriptor='(Ljava/lang/Object;J)V', hbContractId=10, id=81, type=SEND, shouldReturnTrue=false}, HBVertex{argsIndices=[0], owner='java/util/concurrent/atomic/AtomicLongFieldUpdater', name='get', descriptor='(Ljava/lang/Object;)J', hbContractId=10, id=82, type=RECEIVE, shouldReturnTrue=false}, HBVertex{argsIndices=[0], owner='java/util/concurrent/atomic/AtomicLongFieldUpdater', name='getAndSet', descriptor='(Ljava/lang/Object;J)J', hbContractId=10, id=83, type=FULL, shouldReturnTrue=false}, HBVertex{argsIndices=[0], owner='java/util/concurrent/atomic/AtomicLongFieldUpdater', name='getAndIncrement', descriptor='(Ljava/lang/Object;)J', hbContractId=10, id=84, type=FULL, shouldReturnTrue=false}, HBVertex{argsIndices=[0], owner='java/util/concurrent/atomic/AtomicLongFieldUpdater', name='getAndDecrement', descriptor='(Ljava/lang/Object;)J', hbContractId=10, id=85, type=FULL, shouldReturnTrue=false}, HBVertex{argsIndices=[0], owner='java/util/concurrent/atomic/AtomicLongFieldUpdater', name='getAndAdd', descriptor='(Ljava/lang/Object;J)J', hbContractId=10, id=86, type=FULL, shouldReturnTrue=false}, HBVertex{argsIndices=[0], owner='java/util/concurrent/atomic/AtomicLongFieldUpdater', name='incrementAndGet', descriptor='(Ljava/lang/Object;)J', hbContractId=10, id=87, type=FULL, shouldReturnTrue=false}, HBVertex{argsIndices=[0], owner='java/util/concurrent/atomic/AtomicLongFieldUpdater', name='decrementAndGet', descriptor='(Ljava/lang/Object;)J', hbContractId=10, id=88, type=FULL, shouldReturnTrue=false}, HBVertex{argsIndices=[0], owner='java/util/concurrent/atomic/AtomicLongFieldUpdater', name='addAndGet', descriptor='(Ljava/lang/Object;J)J', hbContractId=10, id=89, type=FULL, shouldReturnTrue=false}]}
+HBContract{id=11, vertices=[HBVertex{argsIndices=[-1, 0], owner='java/util/concurrent/atomic/AtomicIntegerArray', name='get', descriptor='(I)I', hbContractId=11, id=90, type=RECEIVE, shouldReturnTrue=false}, HBVertex{argsIndices=[-1, 0], owner='java/util/concurrent/atomic/AtomicIntegerArray', name='set', descriptor='(II)V', hbContractId=11, id=91, type=SEND, shouldReturnTrue=false}, HBVertex{argsIndices=[-1, 0], owner='java/util/concurrent/atomic/AtomicIntegerArray', name='getAndSet', descriptor='(II)I', hbContractId=11, id=92, type=FULL, shouldReturnTrue=false}, HBVertex{argsIndices=[-1, 0], owner='java/util/concurrent/atomic/AtomicIntegerArray', name='compareAndSet', descriptor='(III)Z', hbContractId=11, id=93, type=FULL, shouldReturnTrue=true}, HBVertex{argsIndices=[-1, 0], owner='java/util/concurrent/atomic/AtomicIntegerArray', name='getAndIncrement', descriptor='(I)I', hbContractId=11, id=94, type=FULL, shouldReturnTrue=false}, HBVertex{argsIndices=[-1, 0], owner='java/util/concurrent/atomic/AtomicIntegerArray', name='getAndDecrement', descriptor='(I)I', hbContractId=11, id=95, type=FULL, shouldReturnTrue=false}, HBVertex{argsIndices=[-1, 0], owner='java/util/concurrent/atomic/AtomicIntegerArray', name='getAndAdd', descriptor='(II)I', hbContractId=11, id=96, type=FULL, shouldReturnTrue=false}, HBVertex{argsIndices=[-1, 0], owner='java/util/concurrent/atomic/AtomicIntegerArray', name='incrementAndGet', descriptor='(I)I', hbContractId=11, id=97, type=FULL, shouldReturnTrue=false}, HBVertex{argsIndices=[-1, 0], owner='java/util/concurrent/atomic/AtomicIntegerArray', name='decrementAndGet', descriptor='(I)I', hbContractId=11, id=98, type=FULL, shouldReturnTrue=false}, HBVertex{argsIndices=[-1, 0], owner='java/util/concurrent/atomic/AtomicIntegerArray', name='addAndGet', descriptor='(II)I', hbContractId=11, id=99, type=FULL, shouldReturnTrue=false}]}
+HBContract{id=12, vertices=[HBVertex{argsIndices=[-1, 0], owner='java/util/concurrent/atomic/AtomicLongArray', name='get', descriptor='(I)J', hbContractId=12, id=100, type=RECEIVE, shouldReturnTrue=false}, HBVertex{argsIndices=[-1, 0], owner='java/util/concurrent/atomic/AtomicLongArray', name='set', descriptor='(IJ)V', hbContractId=12, id=101, type=SEND, shouldReturnTrue=false}, HBVertex{argsIndices=[-1, 0], owner='java/util/concurrent/atomic/AtomicLongArray', name='getAndSet', descriptor='(IJ)J', hbContractId=12, id=102, type=FULL, shouldReturnTrue=false}, HBVertex{argsIndices=[-1, 0], owner='java/util/concurrent/atomic/AtomicLongArray', name='compareAndSet', descriptor='(IJJ)Z', hbContractId=12, id=103, type=FULL, shouldReturnTrue=true}, HBVertex{argsIndices=[-1, 0], owner='java/util/concurrent/atomic/AtomicLongArray', name='getAndIncrement', descriptor='(I)J', hbContractId=12, id=104, type=FULL, shouldReturnTrue=false}, HBVertex{argsIndices=[-1, 0], owner='java/util/concurrent/atomic/AtomicLongArray', name='getAndDecrement', descriptor='(I)J', hbContractId=12, id=105, type=FULL, shouldReturnTrue=false}, HBVertex{argsIndices=[-1, 0], owner='java/util/concurrent/atomic/AtomicLongArray', name='getAndAdd', descriptor='(IJ)J', hbContractId=12, id=106, type=FULL, shouldReturnTrue=false}, HBVertex{argsIndices=[-1, 0], owner='java/util/concurrent/atomic/AtomicLongArray', name='incrementAndGet', descriptor='(I)J', hbContractId=12, id=107, type=FULL, shouldReturnTrue=false}, HBVertex{argsIndices=[-1, 0], owner='java/util/concurrent/atomic/AtomicLongArray', name='decrementAndGet', descriptor='(I)J', hbContractId=12, id=108, type=FULL, shouldReturnTrue=false}, HBVertex{argsIndices=[-1, 0], owner='java/util/concurrent/atomic/AtomicLongArray', name='addAndGet', descriptor='(IJ)J', hbContractId=12, id=109, type=FULL, shouldReturnTrue=false}]}
+HBContract{id=13, vertices=[HBVertex{argsIndices=[-1, 0], owner='java/util/concurrent/atomic/AtomicReferenceArray', name='get', descriptor='(I)Ljava/lang/Object;', hbContractId=13, id=110, type=RECEIVE, shouldReturnTrue=false}, HBVertex{argsIndices=[-1, 0], owner='java/util/concurrent/atomic/AtomicReferenceArray', name='set', descriptor='(ILjava/lang/Object;)V', hbContractId=13, id=111, type=SEND, shouldReturnTrue=false}, HBVertex{argsIndices=[-1, 0], owner='java/util/concurrent/atomic/AtomicReferenceArray', name='getAndSet', descriptor='(ILjava/lang/Object;)Ljava/lang/Object;', hbContractId=13, id=112, type=FULL, shouldReturnTrue=false}, HBVertex{argsIndices=[-1, 0], owner='java/util/concurrent/atomic/AtomicReferenceArray', name='compareAndSet', descriptor='(ILjava/lang/Object;Ljava/lang/Object;)Z', hbContractId=13, id=113, type=FULL, shouldReturnTrue=true}]}
+HBContract{id=14, vertices=[HBVertex{argsIndices=[-1], owner='java/util/concurrent/BlockingQueue', name='add', descriptor='(Ljava/lang/Object;)Z', hbContractId=14, id=114, type=SEND, shouldReturnTrue=false}, HBVertex{argsIndices=[-1], owner='java/util/concurrent/BlockingQueue', name='offer', descriptor='(Ljava/lang/Object;)Z', hbContractId=14, id=115, type=SEND, shouldReturnTrue=true}, HBVertex{argsIndices=[-1], owner='java/util/concurrent/BlockingQueue', name='put', descriptor='(Ljava/lang/Object;)Z', hbContractId=14, id=116, type=SEND, shouldReturnTrue=true}, HBVertex{argsIndices=[-1], owner='java/util/concurrent/BlockingQueue', name='take', descriptor='()Ljava/lang/Object;', hbContractId=14, id=117, type=RECEIVE, shouldReturnTrue=false}, HBVertex{argsIndices=[-1], owner='java/util/concurrent/BlockingQueue', name='poll', descriptor='()Ljava/lang/Object;', hbContractId=14, id=118, type=RECEIVE, shouldReturnTrue=false}]}
+HBContract{id=15, vertices=[HBVertex{argsIndices=[-1], owner='java/util/concurrent/CopyOnWriteArrayList', name='add', descriptor='(Ljava/lang/Object;)Z', hbContractId=15, id=119, type=SEND, shouldReturnTrue=false}, HBVertex{argsIndices=[-1], owner='java/util/concurrent/CopyOnWriteArrayList', name='add', descriptor='(ILjava/lang/Object;)V', hbContractId=15, id=120, type=SEND, shouldReturnTrue=false}, HBVertex{argsIndices=[-1], owner='java/util/concurrent/CopyOnWriteArrayList', name='get', descriptor='(I)Ljava/lang/Object;', hbContractId=15, id=121, type=RECEIVE, shouldReturnTrue=false}, HBVertex{argsIndices=[-1], owner='java/util/concurrent/CopyOnWriteArrayList', name='remove', descriptor='(I)Ljava/lang/Object;', hbContractId=15, id=122, type=RECEIVE, shouldReturnTrue=false}, HBVertex{argsIndices=[-1], owner='java/util/concurrent/CopyOnWriteArrayList', name='remove', descriptor='(Ljava/lang/Object;)Z', hbContractId=15, id=123, type=RECEIVE, shouldReturnTrue=false}]}
+
+26.04.2018 09:44:05 System transformer couldn't detect if sun/reflect/GeneratedConstructorAccessor3 is a class loader: Cannot load class information for sun.reflect.GeneratedConstructorAccessor3
+26.04.2018 09:44:05 System transformer couldn't detect if sun/reflect/GeneratedConstructorAccessor2 is a class loader: Cannot load class information for sun.reflect.GeneratedConstructorAccessor2
+26.04.2018 09:44:05 System transformer couldn't detect if sun/reflect/GeneratedConstructorAccessor1 is a class loader: Cannot load class information for sun.reflect.GeneratedConstructorAccessor1
+26.04.2018 09:44:06 System transformer couldn't detect if com/sun/proxy/$Proxy4 is a class loader: Cannot load class information for com.sun.proxy.$Proxy4
+26.04.2018 09:44:06 System transformer couldn't detect if com/sun/proxy/$Proxy3 is a class loader: Cannot load class information for com.sun.proxy.$Proxy3
+26.04.2018 09:44:06 System transformer couldn't detect if com/sun/proxy/$Proxy2 is a class loader: Cannot load class information for com.sun.proxy.$Proxy2
+26.04.2018 09:44:06 System transformer couldn't detect if com/sun/proxy/$Proxy1 is a class loader: Cannot load class information for com.sun.proxy.$Proxy1
+26.04.2018 09:44:10 System transformer couldn't detect if com/sun/proxy/$Proxy0 is a class loader: Cannot load class information for com.sun.proxy.$Proxy0
+26.04.2018 09:44:11 com.devexperts.drd.bootstrap.$composite.CompositeKey0Sample <---> Ljava/util/concurrent/ConcurrentMap;Ljava/lang/Object;
+26.04.2018 09:44:11 com.devexperts.drd.bootstrap.$composite.CompositeKey1Sample <---> Ljava/util/concurrent/locks/Lock;
+26.04.2018 09:44:11 com.devexperts.drd.bootstrap.$composite.CompositeKey2Sample <---> Ljava/lang/Runnable;
+26.04.2018 09:44:11 com.devexperts.drd.bootstrap.$composite.CompositeKey3Sample <---> Ljava/lang/Object;J
+26.04.2018 09:44:11 com.devexperts.drd.bootstrap.$composite.CompositeKey4Sample <---> Ljava/util/concurrent/locks/AbstractQueuedSynchronizer;
+26.04.2018 09:44:11 com.devexperts.drd.bootstrap.$composite.CompositeKey5Sample <---> Ljava/util/concurrent/atomic/AtomicInteger;
+26.04.2018 09:44:11 com.devexperts.drd.bootstrap.$composite.CompositeKey6Sample <---> Ljava/util/concurrent/atomic/AtomicLong;
+26.04.2018 09:44:11 com.devexperts.drd.bootstrap.$composite.CompositeKey7Sample <---> Ljava/util/concurrent/atomic/AtomicBoolean;
+26.04.2018 09:44:11 com.devexperts.drd.bootstrap.$composite.CompositeKey8Sample <---> Ljava/lang/Object;
+26.04.2018 09:44:11 com.devexperts.drd.bootstrap.$composite.CompositeKey9Sample <---> Ljava/util/concurrent/atomic/AtomicIntegerArray;I
+26.04.2018 09:44:11 com.devexperts.drd.bootstrap.$composite.CompositeKey10Sample <---> Ljava/util/concurrent/atomic/AtomicLongArray;I
+26.04.2018 09:44:11 com.devexperts.drd.bootstrap.$composite.CompositeKey11Sample <---> Ljava/util/concurrent/atomic/AtomicReferenceArray;I
+26.04.2018 09:44:11 com.devexperts.drd.bootstrap.$composite.CompositeKey12Sample <---> Ljava/util/concurrent/BlockingQueue;
+26.04.2018 09:44:11 com.devexperts.drd.bootstrap.$composite.CompositeKey13Sample <---> Ljava/util/concurrent/CopyOnWriteArrayList;
+26.04.2018 09:44:11 14 composite keys generated.
+26.04.2018 09:44:11 com.devexperts.drd.bootstrap.$composite.CompositeKey0Sample loaded @ sun.misc.Launcher$AppClassLoader@18b4aac2
+26.04.2018 09:44:11 com.devexperts.drd.bootstrap.$composite.CompositeKey1Sample loaded @ sun.misc.Launcher$AppClassLoader@18b4aac2
+26.04.2018 09:44:11 com.devexperts.drd.bootstrap.$composite.CompositeKey2Sample loaded @ sun.misc.Launcher$AppClassLoader@18b4aac2
+26.04.2018 09:44:11 com.devexperts.drd.bootstrap.$composite.CompositeKey3Sample loaded @ sun.misc.Launcher$AppClassLoader@18b4aac2
+26.04.2018 09:44:11 com.devexperts.drd.bootstrap.$composite.CompositeKey4Sample loaded @ sun.misc.Launcher$AppClassLoader@18b4aac2
+26.04.2018 09:44:11 com.devexperts.drd.bootstrap.$composite.CompositeKey5Sample loaded @ sun.misc.Launcher$AppClassLoader@18b4aac2
+26.04.2018 09:44:11 com.devexperts.drd.bootstrap.$composite.CompositeKey6Sample loaded @ sun.misc.Launcher$AppClassLoader@18b4aac2
+26.04.2018 09:44:11 com.devexperts.drd.bootstrap.$composite.CompositeKey7Sample loaded @ sun.misc.Launcher$AppClassLoader@18b4aac2
+26.04.2018 09:44:11 com.devexperts.drd.bootstrap.$composite.CompositeKey8Sample loaded @ sun.misc.Launcher$AppClassLoader@18b4aac2
+26.04.2018 09:44:11 com.devexperts.drd.bootstrap.$composite.CompositeKey9Sample loaded @ sun.misc.Launcher$AppClassLoader@18b4aac2
+26.04.2018 09:44:11 com.devexperts.drd.bootstrap.$composite.CompositeKey10Sample loaded @ sun.misc.Launcher$AppClassLoader@18b4aac2
+26.04.2018 09:44:11 com.devexperts.drd.bootstrap.$composite.CompositeKey11Sample loaded @ sun.misc.Launcher$AppClassLoader@18b4aac2
+26.04.2018 09:44:11 com.devexperts.drd.bootstrap.$composite.CompositeKey12Sample loaded @ sun.misc.Launcher$AppClassLoader@18b4aac2
+26.04.2018 09:44:11 com.devexperts.drd.bootstrap.$composite.CompositeKey13Sample loaded @ sun.misc.Launcher$AppClassLoader@18b4aac2
+26.04.2018 09:44:11 14 samples generated
+26.04.2018 09:44:11 sun.misc.Unsafe reference obtained!
+26.04.2018 09:44:11 GuardedInterceptor initialized true
+26.04.2018 09:44:11 1 more DRD thread : 7
+26.04.2018 09:44:12 Match: sun.misc.Unsafe.getObjectVolatile <--> vertex9
+26.04.2018 09:44:12 Post-retransformation done. Skipped:
+drdjava.util: 69
+javax.xml: 9
+java.sql: 3
+sun.reflect: 78
+java.util: 206
+sun.management: 5
+sun.net: 16
+java.beans: 1
+javax.security: 1
+sun.nio: 29
+java.nio: 26
+java.net: 15
+com.sun: 7
+sun.instrument: 4
+sun.text: 5
+java.math: 3
+com.devexperts: 241
+sun.misc: 66
+java.security: 24
+sun.security: 15
+sun.io: 1
+sun.util: 68
+java.awt: 5
+java.lang: 174
+java.text: 24
+org.objectweb: 36
+java.io: 59
+com.thoughtworks: 233
+org.xmlpull: 3
+javax.swing: 1
+------------------------------------------------------
+26.04.2018 09:44:12 Match: sun.misc.Unsafe.compareAndSwapInt <--> vertex8
+26.04.2018 09:44:12 Match: sun.misc.Unsafe.compareAndSwapObject <--> vertex6
+26.04.2018 09:44:12 Match: sun.misc.Unsafe.compareAndSwapLong <--> vertex7
+26.04.2018 09:44:12 
+
+=====================================================
+DRD 0.7-SNAPSHOT.201609291623 started it's work
+Java 1.8.0_144 from D:\APP\JAVA\jre
+=====================================================
+
+26.04.2018 09:44:12 Match: java.util.concurrent.atomic.AtomicBoolean.compareAndSet <--> vertex63
+26.04.2018 09:44:12 Match: java.util.concurrent.Semaphore$NonfairSync.acquireShared <--> vertex35
+26.04.2018 09:44:12 Match: java.util.concurrent.Semaphore$NonfairSync.releaseShared <--> vertex38
+26.04.2018 09:44:41 Do not create tvc for drd thread id = 7
+26.04.2018 09:44:41 
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+13 active threads.
+Memory usage: init = 134217728(131072K) used = 34149776(33349K) committed = 125829120(122880K) max = 1881145344(1837056K).
+Contract clocks: 25 ( + 27 - 2 = 25. Disposal took 10 ms).
+	Hits : 124602.
+	Approx total reserved size: 500; real size : 104. Dead threads clocks size: 0.
+Volatile clocks: 39 ( + 39 - 0 = 39. Disposal took 4 ms).
+	Hits : 106597.
+	Approx total reserved size: 780; real size : 24. Dead threads clocks size: 0.
+Syn clocks: 6 ( + 7 - 1 = 6). New clock for nothing : 0.
+	Hits : 23.
+	Approx total reserved size : 120; real size : 14. Dead threads clocks size : 0.
+Foreign clocks: 0 ( + 0 - 0 = 0). New clock for nothing : 0.
+	Hits : 0
+	Approx total reserved size: 120; real size : 14. Dead threads clocks size: 0
+
+Vector clock counters: 
+	New array allocations for live clocks: 0 vs 223123 reusages.
+	Dead clocks during merge: 0 cached, 223123 same, 0 new.
+	Generations update: 0 light, 0 hard (0 of them from zero).
+	Vector clock merge: 412 optimized vs 197900 full acquires; 18745 optimized vs 25224 full releases. 11051 two-way merges. 
+Diff was calculated 0 times.
+	Shared reads in data clock occurred 49 times.
+	VC total live resizes: 32, total dead resizes: 0.
+	Yield counter : 2396.
+================= Internal counters (processed/ignored) ===============
+sync_method_enter: 1/0=1
+sync_method_exit: 1/0=1
+monitor_enter: 15/0=15
+monitor_exit: 15/0=15
+wait: 0/0=0
+join: 0/0=0
+volatile: 106623/308524=415147
+contract_sync: 199638/261488=461126
+field_ops: 2512007/326906=2838913
+foreign_ops: 0/0=0
+races: 0/0=0
+
+Field access counters
+2513258 DETECT
+0 IGNORE_SCOPE
+0 IGNORE_RULE
+0 IGNORE_CONSTRUCTOR
+325654 IGNORE_FINAL
+0 IGNORE_ERROR
+Locked all time soft/hard (if available) 0/0 of total 1489 methods.
+
+==============================================================================
+-----------Top 100 accessed fields: total = writes+reads
+
+
+
+-----------------Data clock histogram (top 20): -----------------
+3377   java/util/Formatter$FormatSpecifier
+672   java/util/Formatter$FixedString
+572   java/util/Formatter$Flags
+444   MMIO_Reader$Node
+208   java/lang/management/ThreadInfo
+116   java/util/Formatter
+44   sun/nio/cs/US_ASCII$Encoder
+11   MMIO_Reader
+10   java/lang/management/LockInfo
+4   java/io/RandomAccessFile
+4   sun/usagetracker/UsageTrackerClient
+3   sun/nio/ch/NativeThreadSet
+3   java/security/BasicPermissionCollection
+1   java/nio/channels/spi/AbstractInterruptibleChannel
+1   sun/management/Util
+1   java/util/PriorityQueue
+0   java/lang/ProcessEnvironment$CheckedEntrySet$1
+--------------------Total: 5471------------------------
+
+
+
+Stats gathered in 36 ms.
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+26.04.2018 09:44:44 
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Last time stats were gathered 2570 ms ago.
+8 active threads.
+Memory usage: init = 134217728(131072K) used = 47178360(46072K) committed = 125829120(122880K) max = 1881145344(1837056K).
+Contract clocks: 25 ( + 0 - 0 = 0. Disposal took 0 ms).
+	Hits : 11568.
+	Approx total reserved size: 500; real size : 52. Dead threads clocks size: 52.
+Volatile clocks: 39 ( + 0 - 0 = 0. Disposal took 0 ms).
+	Hits : 9784.
+	Approx total reserved size: 780; real size : 24. Dead threads clocks size: 0.
+Syn clocks: 6 ( + 0 - 0 = 0). New clock for nothing : 0.
+	Hits : 0.
+	Approx total reserved size : 120; real size : 14. Dead threads clocks size : 0.
+Foreign clocks: 0 ( + 0 - 0 = 0). New clock for nothing : 0.
+	Hits : 0
+	Approx total reserved size: 120; real size : 14. Dead threads clocks size: 0
+
+Vector clock counters: 
+	New array allocations for live clocks: 0 vs 20522 reusages.
+	Dead clocks during merge: 39 cached, 20264 same, 219 new.
+	Generations update: 25 light, 26 hard (29 of them from zero).
+	Vector clock merge: 0 optimized vs 18252 full acquires; 1788 optimized vs 2269 full releases. 960 two-way merges. 
+Diff was calculated 22 times.
+	Shared reads in data clock occurred 0 times.
+	VC total live resizes: 0, total dead resizes: 6.
+	Yield counter : 78.
+================= Internal counters (processed/ignored) ===============
+sync_method_enter: 0/0=0
+sync_method_exit: 0/0=0
+monitor_enter: 0/0=0
+monitor_exit: 0/0=0
+wait: 0/0=0
+join: 0/0=0
+volatile: 9791/24344=34135
+contract_sync: 18499/23638=42137
+field_ops: 232238/30124=262362
+foreign_ops: 0/0=0
+races: 0/0=0
+
+Field access counters
+232270 DETECT
+0 IGNORE_SCOPE
+0 IGNORE_RULE
+0 IGNORE_CONSTRUCTOR
+30092 IGNORE_FINAL
+0 IGNORE_ERROR
+Locked all time soft/hard (if available) 0/0 of total 1525 methods.
+
+==============================================================================
+-----------Top 100 accessed fields: total = writes+reads
+
+
+
+-----------------Data clock histogram (top 20): -----------------
+22127   java/util/Formatter$FormatSpecifier
+4422   java/util/Formatter$FixedString
+3697   java/util/Formatter$Flags
+2944   MMIO_Reader$Node
+741   java/util/Formatter
+282   sun/nio/cs/US_ASCII$Encoder
+208   java/lang/management/ThreadInfo
+11   MMIO_Reader
+10   java/lang/management/LockInfo
+10   java/util/IdentityHashMap$IdentityHashMapIterator
+4   java/io/RandomAccessFile
+4   sun/usagetracker/UsageTrackerClient
+3   sun/nio/ch/NativeThreadSet
+3   java/security/BasicPermissionCollection
+2   java/util/IdentityHashMap$KeyIterator
+2   java/util/PriorityQueue
+1   java/nio/channels/spi/AbstractInterruptibleChannel
+1   sun/management/Util
+0   java/lang/ProcessEnvironment$CheckedEntrySet$1
+--------------------Total: 34472------------------------
+
+
+
+Stats gathered in 0 ms.
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+

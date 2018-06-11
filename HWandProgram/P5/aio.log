@@ -1,0 +1,4 @@
+四月 24, 2018 8:28:51 下午 AsynchIO processOneCmd
+警告: Invalid filePath: yy6.txt in opid 9
+四月 24, 2018 8:28:51 下午 AsynchIO$MyHandler completed
+警告: op not performed because of start position out of file size bound. opid = 1, path = yy1.txt 

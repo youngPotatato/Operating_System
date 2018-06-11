@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/Yu Yang/Downloads/book/O/p4C/main.c
+stdio.h
+-
+stdint.h
+-
+malloc.h
+-
+time.h
+-
+
